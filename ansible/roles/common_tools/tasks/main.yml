@@ -1,0 +1,8 @@
+---
+  - name: install curl and wget
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - curl
+      - wget

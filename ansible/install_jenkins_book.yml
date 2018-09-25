@@ -1,0 +1,12 @@
+---
+- name: Install Jenkins
+  hosts: localhost
+  connection: local
+  become: true
+  become_method: sudo
+  gather_facts: false
+  roles:
+    - common_tools
+    - java_install
+    - jenkins_install
+    - jenkins_start

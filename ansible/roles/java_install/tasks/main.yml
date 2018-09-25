@@ -1,0 +1,10 @@
+---
+  - name: java 8 install
+    yum:
+      pkg: java-1.8.0-openjdk
+      state: installed
+
+  - name: java 7 uninstall
+    yum:
+      pkg: java-1.7.0-openjdk
+      state: removed

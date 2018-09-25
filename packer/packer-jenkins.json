@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "source_ami": "ami-f976839e",
+    "instance_type": "t2.micro",
+    "region": "eu-west-2"
+
+  },
+  "builders":[
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "ec2-user",
+      "ami_name": "amalinowski jenkins-ami {{timestamp}}"
+    }
+  ],
+  "provisioners":[
+    {
+      "type": "shell",
+      "inline": [
+        "sudo pip install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "../ansible/install_jenkins_book.yml",
+      "role_paths": ["../ansible/roles"],
+      "playbook_dir": "../ansible"
+    }
+  ]
+}
