@@ -1,0 +1,6 @@
+---
+  - name: Add 'jenkins' user
+    user:
+      name: "{{ jenkins_login }}"
+      password: "{{ jenkins_password }}"
+      comment: User for Jenkins

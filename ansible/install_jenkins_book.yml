@@ -1,12 +1,15 @@
 ---
 - name: Install Jenkins
-  hosts: localhost
+  hosts: jenkins
   connection: local
   become: true
   become_method: sudo
   gather_facts: false
+  vars_files:
+    - hosts/host_vars/jenkins.yml
   roles:
     - common_tools
     - java_install
+    - jenkins_user_add
     - jenkins_install
     - jenkins_start

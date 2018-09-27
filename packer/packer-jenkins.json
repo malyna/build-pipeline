@@ -27,10 +27,20 @@
       ]
     },
     {
+      "type": "file",
+      "source": "../ansible/vault/.vault_pass",
+      "destination": "/tmp/.vault_pass"
+    },
+    {
       "type": "ansible-local",
       "playbook_file": "../ansible/install_jenkins_book.yml",
+      "inventory_file": "../ansible/hosts/hostsMain",
+      "host_vars": "../ansible/hosts/host_vars",
       "role_paths": ["../ansible/roles"],
-      "playbook_dir": "../ansible"
+      "playbook_dir": "../ansible",
+      "extra_arguments":[
+        "--vault-password-file=/tmp/.vault_pass"
+      ]
     }
   ]
 }
